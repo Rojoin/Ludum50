@@ -17,13 +17,18 @@ public class BaseEnemy : StateEmemy
     }
     public override void OnWalking()
     {
-        agent.SetDestination(enemy.position);
         if (agent.stoppingDistance > Vector3.Distance(transform.position, enemy.position)) 
             myState = State.Attacking;
+        else
+            agent.SetDestination(enemy.position);
+
     }
     public override void OnAttaking()
     {
-        Debug.Log("Attack");
+        if(attack.DoAttack())
+        {
+            myState = State.Walking;
+        }
     }
     public override void OnHurt()
     {
