@@ -10,8 +10,8 @@ public class BaseAttack : MonoBehaviour
     public float timeWaitingToTryHit; // tiempo antes de intentar pegar el golpe
     public float timeTryingHit; // tiempo en el que el golpe puede hacer efecto
     public float timeRestToEnd; // tiempo despues de intentar golpear
-    bool endAttack;
-    bool canAttack;
+    public bool endAttack;
+    public bool canAttack;
     GameObject target = null;
     void Start()
     {
@@ -39,7 +39,7 @@ public class BaseAttack : MonoBehaviour
             if (target != null) target = null;
         }
     }
-    IEnumerator Attacking()
+    public virtual IEnumerator Attacking()
     {
         endAttack = false;
         canAttack = false;

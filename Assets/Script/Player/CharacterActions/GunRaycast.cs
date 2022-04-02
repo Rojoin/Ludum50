@@ -10,20 +10,28 @@ public class GunRaycast : MonoBehaviour
     public int damage = 10;
     public int range = 100;
     public LayerMask hiteableLayer;
+    public AmmoSystem myAmmo;
+    private void Start()
+    {
+        myAmmo = GetComponent<AmmoSystem>();
+    }
     public void Shooting()
     {
-
-        RaycastHit hit;
-       if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit,range, hiteableLayer))
+        if (myAmmo.GetMagazineBulletsCount() > 0 && !myAmmo.IsReloading)
         {
-
-            Killable killable = hit.transform.GetComponent<Killable>();
-
-            if (killable != null)
+            myAmmo.RemoveOneBullet();
+            RaycastHit hit;
+            if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range, hiteableLayer))
             {
-                killable.TakeDamage(damage);
+
+                Killable killable = hit.transform.GetComponent<Killable>();
+
+                if (killable != null)
+                {
+                    killable.TakeDamage(damage);
+                }
+
             }
-            
         }
 
     }
