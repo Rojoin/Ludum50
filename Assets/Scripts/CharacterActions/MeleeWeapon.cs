@@ -3,25 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class meleeWeapon : MonoBehaviour
+public class MeleeWeapon : MonoBehaviour
 {
     [SerializeField] float timeUntilAttack = 0.1f; 
     [SerializeField] float activeTimeAttack = 0.5f; 
     [SerializeField] BoxCollider boxCollider;
-    public InputAction shoot;
     // Start is called before the first frame update
     void Start()
     {
         
     }
 
-
-
-    void OnShoot()
+    public void meleeAttack()
     {
-        
         StartCoroutine(activateMelee());
+
     }
+
+    
 
         IEnumerator activateMelee()
         {

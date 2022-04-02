@@ -10,8 +10,9 @@ public class GunRaycast : MonoBehaviour
    public float damage = 10f;
    public float range = 100f;
     public GameObject aTest;
-     public ParticleSystem flash;  
-       public InputAction shoot;
+    public GameObject inpactEffect;
+ 
+
    
     // Start is called before the first frame update
     void Start()
@@ -19,22 +20,30 @@ public class GunRaycast : MonoBehaviour
         
     }
 
-    void OnShoot()
+
+    public void Shooting()
     {
-        flash.Play();
+
         RaycastHit hit;
        if(Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
         {
             Debug.Log(hit.transform.name);
+            Killable killable = hit.transform.GetComponent<Killable>();
+
+            if(killable != null)
+            {
+                killable.TakeDamage(damage);
+            }
+
+            Instantiate(inpactEffect, hit.point, Quaternion.LookRotation(hit.normal));
           // Instantiate(aTest,hit.point,Quaternion.identity,null);
         }
         else{
             Debug.DrawRay(transform.position,Vector3.forward * 5f,Color.green);
         }
         Debug.Log("Click");
-        
-
     }
+    
     // Update is called once per frame
     void Update()
     {
