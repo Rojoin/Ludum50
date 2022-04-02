@@ -53,7 +53,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 468589325}
-  - component: {fileID: 468589326}
   m_Layer: 0
   m_Name: WeaponHolder
   m_TagString: Untagged
@@ -77,29 +76,6 @@ Transform:
   m_Father: {fileID: 8997996947095583982}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &468589326
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 468589324}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a70ccdfa8464164ca5da5bd84f66691, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shoot:
-    m_Name: Shoot
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 57b6c482-1f90-4096-9dd9-a14548a9607e
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
-  weaponHolder: {fileID: 468589324}
-  selectedWeapon: 0
 --- !u!1 &1474435529
 GameObject:
   m_ObjectHideFlags: 0
@@ -214,7 +190,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1515270577
 Transform:
   m_ObjectHideFlags: 0
@@ -5224,7 +5200,7 @@ GameObject:
   - component: {fileID: 5393215578589016640}
   m_Layer: 8
   m_Name: Capsule
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5301,7 +5277,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 5393215578589016642}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
@@ -5322,6 +5298,9 @@ GameObject:
   - component: {fileID: 8616685848737228376}
   - component: {fileID: 1784949479}
   - component: {fileID: 1784949480}
+  - component: {fileID: 1784949487}
+  - component: {fileID: 1784949488}
+  - component: {fileID: 1123787544422038935}
   m_Layer: 8
   m_Name: PlayerCapsule
   m_TagString: Player
@@ -5543,17 +5522,9 @@ MonoBehaviour:
   fpsCam: {fileID: 5743363751246839304}
   damage: 10
   range: 100
-  aTest: {fileID: 2772755310023281268, guid: 07643e59fd201a945861f26175fd34fe, type: 3}
-  flash: {fileID: 1642615425}
-  shoot:
-    m_Name: Shoot
-    m_Type: 1
-    m_ExpectedControlType: Button
-    m_Id: b95ff754-7c09-4cf8-81ab-450016bbc359
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
+  hiteableLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &1784949480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5569,12 +5540,86 @@ MonoBehaviour:
   timeUntilAttack: 0.1
   activeTimeAttack: 0.5
   boxCollider: {fileID: 421942093}
-  shoot:
-    m_Name: Shoot
+--- !u!114 &1784949487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8616685848737228372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a70ccdfa8464164ca5da5bd84f66691, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scroll:
+    m_Name: Scroll
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: a853c1c5-37df-413e-aab9-e8d4ff69c44e
+    m_Id: 1b58209d-d5d6-4f59-a308-596576c686ea
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+  weaponHolder: {fileID: 468589324}
+  weapons:
+  - {fileID: 1474435529}
+  - {fileID: 1515270576}
+  weaponIndex: 0
+--- !u!114 &1784949488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8616685848737228372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1317cc22f9a568d44b5cd0fdcb82dded, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attack:
+    m_Name: Attack
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 38b677df-c00c-44b2-a4d6-9cfc10e32763
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  recharge:
+    m_Name: Recharge
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 774721c5-07a7-435b-926e-db730c357f9b
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  scroll:
+    m_Name: Scroll
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 31f2f88e-7c99-49ed-969c-1682ba42cac2
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  switchingWeapons: {fileID: 1784949487}
+  gun: {fileID: 1784949479}
+  melee: {fileID: 1784949480}
+  weapons: []
+--- !u!114 &1123787544422038935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8616685848737228372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdd4bfb19f858894aa62238f65706a15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifePoints: 100
+  isDead: 0

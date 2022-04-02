@@ -30,12 +30,16 @@ public class BaseEnemy : StateEmemy
             myState = State.Walking;
         }
     }
-    public override void OnHurt()
+    public override void OnHurt(int damage)
     {
-
+        lifePoints -= damage;
+        if (lifePoints > 0)
+            myState = State.Walking;
+        else
+            myState = State.Die;
     }
     public override void OnDie()
     {
-
+        Destroy(gameObject);
     }
 }

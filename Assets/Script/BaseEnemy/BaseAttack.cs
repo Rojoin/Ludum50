@@ -43,19 +43,14 @@ public class BaseAttack : MonoBehaviour
     {
         endAttack = false;
         canAttack = false;
-        Debug.Log("start");
         yield return new WaitForSeconds(timeWaitingToTryHit);
-        Debug.Log("letsSlash");
         col.enabled = true;
         yield return new WaitForSeconds(timeTryingHit);
-        Debug.Log("slashed");
         col.enabled = false;
         if(target != null) target.GetComponent<PlayerHP>().TakeDamage(damage);
         yield return new WaitForSeconds(timeRestToEnd);
-        Debug.Log("rest");
         endAttack = true;
         yield return new WaitForSeconds(attackCooldown);
-        Debug.Log("cd");
         canAttack = true;
 }
 }

@@ -27,7 +27,6 @@ public abstract class StateEmemy : MonoBehaviour
                 OnAttaking();
                 break;
             case State.Hurt:
-                OnHurt();
                 break;
             case State.Die:
                 OnDie();
@@ -37,6 +36,6 @@ public abstract class StateEmemy : MonoBehaviour
     public abstract void OnStay();
     public abstract void OnWalking();
     public abstract void OnAttaking();
-    public abstract void OnHurt();
+    public abstract void OnHurt(int damage);
     public abstract void OnDie();
 }

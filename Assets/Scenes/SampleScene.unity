@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465782, g: 0.49641252, b: 0.5748167, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -365,11 +365,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07643e59fd201a945861f26175fd34fe, type: 3}
---- !u!1 &468589324 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 468589324, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
-  m_PrefabInstance: {fileID: 1771930150}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &564326515 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2772755310023281268, guid: 07643e59fd201a945861f26175fd34fe, type: 3}
@@ -556,16 +551,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07643e59fd201a945861f26175fd34fe, type: 3}
---- !u!1 &1474435529 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1474435529, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
-  m_PrefabInstance: {fileID: 1771930150}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1515270576 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1515270576, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
-  m_PrefabInstance: {fileID: 1771930150}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1736758260
 GameObject:
   m_ObjectHideFlags: 0
@@ -648,14 +633,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1474435529, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1515270576, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_Name
       value: PlayerCapsule
@@ -704,105 +681,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 468589326, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
---- !u!1 &1784949478 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
-  m_PrefabInstance: {fileID: 1771930150}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1784949479 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1784949479, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
-  m_PrefabInstance: {fileID: 1771930150}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1784949478}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11db8aa718323e04ea548857b4f69412, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1784949480 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1784949480, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
-  m_PrefabInstance: {fileID: 1771930150}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1784949478}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6f73d536b9c1844ca2ca7fe3f95c72d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1784949487
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1784949478}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a70ccdfa8464164ca5da5bd84f66691, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scroll:
-    m_Name: Scroll
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 1b58209d-d5d6-4f59-a308-596576c686ea
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
-  weaponHolder: {fileID: 468589324}
-  weapons:
-  - {fileID: 1474435529}
-  - {fileID: 1515270576}
-  weaponIndex: 0
---- !u!114 &1784949488
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1784949478}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1317cc22f9a568d44b5cd0fdcb82dded, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attack:
-    m_Name: Attack
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 38b677df-c00c-44b2-a4d6-9cfc10e32763
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
-  recharge:
-    m_Name: Recharge
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 774721c5-07a7-435b-926e-db730c357f9b
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
-  scroll:
-    m_Name: Scroll
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 31f2f88e-7c99-49ed-969c-1682ba42cac2
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
-  switchingWeapons: {fileID: 1784949487}
-  gun: {fileID: 1784949479}
-  melee: {fileID: 1784949480}
-  weapons: []
 --- !u!1 &1934774372
 GameObject:
   m_ObjectHideFlags: 0
