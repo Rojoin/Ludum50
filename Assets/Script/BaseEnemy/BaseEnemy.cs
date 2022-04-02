@@ -8,6 +8,8 @@ public class BaseEnemy : StateEmemy
     public NavMeshAgent agent;
     public Transform enemy;
     public BaseAttack attack;
+
+    public GameObject healthOrb;
     void Start()
     {
     }
@@ -40,6 +42,8 @@ public class BaseEnemy : StateEmemy
     }
     public override void OnDie()
     {
+        Instantiate(healthOrb, gameObject.transform.position, Quaternion.identity);
+        healthOrb.transform.DetachChildren();
         Destroy(gameObject);
     }
 }

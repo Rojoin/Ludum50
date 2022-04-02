@@ -68,13 +68,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 468589324}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.29200047, y: 1.4136275, z: 0.9832864}
+  m_LocalPosition: {x: 0.18774015, y: 0.018627506, z: 1.0826919}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1474435533}
   - {fileID: 1515270577}
-  m_Father: {fileID: 8997996947095583982}
-  m_RootOrder: 2
+  m_Father: {fileID: 5289611476375122946}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1474435529
 GameObject:
@@ -5100,7 +5100,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.47974062, y: 0.02, z: -0.09940553}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 468589325}
   m_Father: {fileID: 4135013735270702856}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5277,7 +5278,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 5393215578589016642}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
@@ -5297,10 +5298,10 @@ GameObject:
   - component: {fileID: 5420857361349278248}
   - component: {fileID: 8616685848737228376}
   - component: {fileID: 1784949479}
-  - component: {fileID: 1784949480}
   - component: {fileID: 1784949487}
   - component: {fileID: 1784949488}
   - component: {fileID: 1123787544422038935}
+  - component: {fileID: 4135924696129695782}
   m_Layer: 8
   m_Name: PlayerCapsule
   m_TagString: Player
@@ -5321,7 +5322,6 @@ Transform:
   m_Children:
   - {fileID: 4135013735270702856}
   - {fileID: 5393215578589016641}
-  - {fileID: 468589325}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5525,21 +5525,7 @@ MonoBehaviour:
   hiteableLayer:
     serializedVersion: 2
     m_Bits: 64
---- !u!114 &1784949480
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8616685848737228372}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6f73d536b9c1844ca2ca7fe3f95c72d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeUntilAttack: 0.1
-  activeTimeAttack: 0.5
-  boxCollider: {fileID: 421942093}
+  myAmmo: {fileID: 0}
 --- !u!114 &1784949487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5607,7 +5593,7 @@ MonoBehaviour:
     m_Flags: 0
   switchingWeapons: {fileID: 1784949487}
   gun: {fileID: 1784949479}
-  melee: {fileID: 1784949480}
+  melee: {fileID: 0}
   weapons: []
 --- !u!114 &1123787544422038935
 MonoBehaviour:
@@ -5621,5 +5607,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdd4bfb19f858894aa62238f65706a15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifePoints: 100
+  currentLifePoints: 100
+  maxLifePoints: 100
+  decreasePerSecond: 0
   isDead: 0
+--- !u!114 &4135924696129695782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8616685848737228372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d685fa6005eb055499264ef00eaf4d54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  magazine: 0
+  reserve: 0
+  maxMagazine: 0
+  reloading: 0
+  timeToReload: 0
+  timeToEndAnim: 0

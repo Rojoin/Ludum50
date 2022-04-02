@@ -14,14 +14,8 @@ public class inputSystem : MonoBehaviour
     [SerializeField] MeleeWeapon melee;
  
     [SerializeField] GameObject[] weapons;
-  
     const int slot1 = 0; //Arma Pistola
     const int slot2 = 1; //Arma Melee
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     void OnAttack()
     {
@@ -36,19 +30,9 @@ public class inputSystem : MonoBehaviour
         }
 
     }
-    void OnRecharge()
-    {
-        Debug.Log("Recargando");
-    }
     void OnScroll()
     {
-        switchingWeapons.SelectWeapon();
+        if(!gun.myAmmo.IsReloading) switchingWeapons.SelectWeapon();
     }
-   
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+  
 }
