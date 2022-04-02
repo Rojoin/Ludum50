@@ -4,11 +4,25 @@ using UnityEngine;
 
 public class PlayerHP : MonoBehaviour
 {
-    public int lifePoints = 100;
+
+    public float currentLifePoints = 100;
+    public float maxLifePoints = 100;
+    public float decreasePerSecond;
     public bool isDead = false;
     public void TakeDamage(int dmg)
     {
-        lifePoints -= dmg;
-        if (lifePoints < 1) isDead = true;
+        currentLifePoints -= dmg;
+        if (currentLifePoints < 1) isDead = true;
+    }
+
+    public void ReceiveHealth(int health)
+    {
+        currentLifePoints+=health;
+        currentLifePoints=(currentLifePoints >maxLifePoints) ? maxLifePoints : currentLifePoints;
+
+    }
+    void Update()
+    {
+      currentLifePoints -=Time.deltaTime * decreasePerSecond;
     }
 }
