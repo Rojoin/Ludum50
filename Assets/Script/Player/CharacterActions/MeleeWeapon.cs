@@ -5,9 +5,12 @@ using UnityEngine.InputSystem;
 
 public class MeleeWeapon : MonoBehaviour
 {
+    public Collider col;
+    public int damage;
+    bool isAttacking;
     [SerializeField] float timeUntilAttack = 0.1f; 
     [SerializeField] float activeTimeAttack = 0.5f; 
-    [SerializeField] BoxCollider boxCollider;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -16,20 +19,30 @@ public class MeleeWeapon : MonoBehaviour
 
     public void meleeAttack()
     {
+        if(!isAttacking)
         StartCoroutine(activateMelee());
-
     }
-
-    
-
-        IEnumerator activateMelee()
+    public LayerMask hitable;
+    public void OnTriggerStay(Collider other)
+    {
+        Debug.Log("No me falles");
+        if(other.gameObject.CompareTag("Enemy"))
         {
-            yield return new WaitForSeconds(timeUntilAttack);
-            boxCollider.gameObject.SetActive(true);
-            Debug.Log("Se activo la hitbox");
-            yield return new WaitForSeconds(activeTimeAttack);
-            boxCollider.gameObject.SetActive(false);
+            Debug.Log("aca");
+           other.GetComponent<BaseEnemy>().lifePoints-=damage;
         }
+    }
+    IEnumerator activateMelee()
+    {
+        isAttacking = true;
+        yield return new WaitForSeconds(timeUntilAttack);
+        col.enabled = true;
+        Debug.Log("Se activo la hitbox");
+        
+        yield return new WaitForSeconds(activeTimeAttack);
+        col.enabled = false;
+        isAttacking = false;
+    }
         
     // Update is called once per frame
     void Update()
