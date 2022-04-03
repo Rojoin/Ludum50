@@ -46,7 +46,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 2.5
+  m_Speed: 0
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -74,7 +74,7 @@ MonoBehaviour:
   lifePoints: 10
   agent: {fileID: 3573151716835436717}
   enemy: {fileID: 0}
-  attack: {fileID: 3573151718032194812}
+  attack: {fileID: 0}
   healthOrb: {fileID: 3559433516604762400, guid: 4c1a70395079b044bbea0bb4e64d6232, type: 3}
 --- !u!114 &3573151716835436718
 MonoBehaviour:
@@ -226,17 +226,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 3573151718032194811}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c8e2bed7d5dd3841999aab3f9631f03, type: 3}
+  m_Script: {fileID: 11500000, guid: 8ede688f11d4e1e4cb7e330ee9c89d71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  col: {fileID: 3573151718032194813}
   damage: 10
-  attackCooldown: 5
-  timeWaitingToTryHit: 1.5
-  timeTryingHit: 0.5
+  attackCooldown: 1
+  timeWaitingToTryHit: 1
+  timeTryingHit: 1
   timeRestToEnd: 1
   endAttack: 0
   canAttack: 0
+  target: {fileID: 0}
+  col: {fileID: 3573151718032194813}
 --- !u!65 &3573151718032194813
 BoxCollider:
   m_ObjectHideFlags: 0
