@@ -23,15 +23,15 @@ public class inputSystem : MonoBehaviour
    
     void OnAttack()
     {
-        switch(switchingWeapons.weaponIndex)
+       /* switch(switchingWeapons.index)
         {
-            case slot1:
+            case switchingWeapons.index:
                 gun.Shooting();
                 break;
-            case slot2:
+            case katana:
                 melee.meleeAttack();
                 break;
-        }
+        }*/
 
     }
     void OnScroll()

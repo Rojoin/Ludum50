@@ -10,12 +10,14 @@ public class SwitchingWeapons : MonoBehaviour
     public GameObject weaponHolder;
     float mouseWheel =0f; 
     [SerializeField] GameObject[] weapons;
-    public int weaponIndex = 0;
+    
+    public enum IndexWeapon{gun,katana};
+    public IndexWeapon index;
     
     // Start is called before the first frame update
     void Start()
     {
-        weaponIndex = 0;
+        index = IndexWeapon.gun;
     }
    /* void OnScroll()
     {
@@ -36,28 +38,28 @@ public class SwitchingWeapons : MonoBehaviour
 
       if(mouseWheel !=0)
       {
-        weapons[weaponIndex].SetActive(false);
+        weapons[(int)index].SetActive(false);
 
         if(mouseWheel >0)
         {
-            weaponIndex++;
+            index++;
 
-            if(weaponIndex > weapons.Length-1)
+            if((int)index> weapons.Length-1)
             {
-                weaponIndex= 0;
+                index= 0;
             }
 
         }
         else if(mouseWheel <0)
         {
-             weaponIndex--;
+             index--;
 
-              if(weaponIndex < 0)
+              if((int)index < 0)
             {
-                weaponIndex = weapons.Length-1;
+                index = (IndexWeapon)(weapons.Length-1);
             }
         }
-        weapons[weaponIndex].SetActive(true);
+        weapons[(int)index].SetActive(true);
       }
 
         
