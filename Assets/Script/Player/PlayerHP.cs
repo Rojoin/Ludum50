@@ -15,6 +15,10 @@ public class PlayerHP : MonoBehaviour
         if (currentLifePoints < 1) isDead = true;
     }
 
+    public float GetCurrentLifePoints()
+    {
+        return currentLifePoints;
+    }
     public void ReceiveHealth(int health)
     {
         currentLifePoints+=health;
