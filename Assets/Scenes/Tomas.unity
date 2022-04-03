@@ -1759,7 +1759,13 @@ MonoBehaviour:
   - {fileID: 174195278}
   - {fileID: 2061910639}
   - {fileID: 1505644143}
-  BaseEnemy: {fileID: 153662482}
+  baseEnemy:
+  - {fileID: 153662482}
+  - {fileID: 153662482}
+  timer: 0
+  constantTimer: 10
+  random: 0
+  maxRandomTimer: 5
 --- !u!4 &1987770720
 Transform:
   m_ObjectHideFlags: 0
