@@ -34,6 +34,7 @@ public class BaseEnemy : StateEmemy
     }
     public override void OnHurt(int damage)
     {
+        myState = State.Hurt;
         lifePoints -= damage;
         if (lifePoints > 0)
             myState = State.Walking;
