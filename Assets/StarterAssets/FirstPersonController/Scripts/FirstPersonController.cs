@@ -72,7 +72,8 @@ namespace StarterAssets
 		private GameObject _mainCamera;
 
 		private const float _threshold = 0.01f;
-
+		public CharacterController controller { get { return _controller; } }
+		public StarterAssetsInputs inputDir { get {return _input; } }
 		private void Awake()
 		{
 			// get a reference to our main camera
@@ -86,7 +87,6 @@ namespace StarterAssets
 		{
 			_controller = GetComponent<CharacterController>();
 			_input = GetComponent<StarterAssetsInputs>();
-
 			// reset our timeouts on start
 			_jumpTimeoutDelta = JumpTimeout;
 			_fallTimeoutDelta = FallTimeout;

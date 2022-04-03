@@ -1467,6 +1467,14 @@ PrefabInstance:
       propertyPath: decreasePerSecond
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1975595511918684424, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: dash.m_Id
+      value: 7d03099e-f36a-45b4-b52a-3d15fa65e29e
+      objectReference: {fileID: 0}
+    - target: {fileID: 1975595511918684424, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: dash.m_Name
+      value: Dash
+      objectReference: {fileID: 0}
     - target: {fileID: 4135924696129695782, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: reserve
       value: 120
