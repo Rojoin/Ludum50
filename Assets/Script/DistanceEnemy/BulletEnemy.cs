@@ -12,9 +12,10 @@ public class BulletEnemy : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 
     }
-    public void OnStart()
+    public void OnStart(Vector3 hitpoint)
     {
-        transform.LookAt(targetPoint);
+        targetPoint = hitpoint;
+        transform.LookAt(-transform.forward + transform.position);
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -25,7 +26,7 @@ public class BulletEnemy : MonoBehaviour
     }
     private void Update()
     {
-        rb.velocity = transform.forward * speed * Time.deltaTime;
+        rb.velocity = (transform.position - targetPoint).normalized * speed * Time.deltaTime;
     }
 
 }

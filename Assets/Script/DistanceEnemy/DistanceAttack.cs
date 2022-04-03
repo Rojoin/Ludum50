@@ -37,9 +37,19 @@ public class DistanceAttack : BaseAttack
     }
     void ShootBullet()
     {
-        shootScript[index].OnStart();
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, (target.transform.position - transform.position).normalized, out hit, 1000))
+        {
+
+        }
+
+        shootScript[index].OnStart(hit.point);
         bullets[index].SetActive(true);
         index++;
         if (index >= bullets.Length) index = 0;
+    }
+    private void Update()
+    {
+        Debug.DrawLine(transform.position,transform.up * 10,Color.red);
     }
 }
