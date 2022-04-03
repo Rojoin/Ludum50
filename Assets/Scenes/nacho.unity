@@ -1821,6 +1821,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DistanceEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 4403912713449632450, guid: 9f2eea6886b699c49a5ea2fb9f3bbcae, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4403912713449632451, guid: 9f2eea6886b699c49a5ea2fb9f3bbcae, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -1942,6 +1946,10 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 793473250}
+    - target: {fileID: 3573151716835436716, guid: 3b9e2eef3d9b23d4a8fd67b1c0187d5c, type: 3}
+      propertyPath: deadAnimTime
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3573151716835436717, guid: 3b9e2eef3d9b23d4a8fd67b1c0187d5c, type: 3}
       propertyPath: m_Speed
       value: 2.5
