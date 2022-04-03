@@ -17,7 +17,7 @@ TagManager:
   - Hiteable
   - Player
   - PlayerWeapon
-  - 
+  - bullet
   - 
   - 
   - 
@@ -43,4 +43,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Image
+    uniqueID: 3170739349
+    locked: 0
+  - name: Menu
+    uniqueID: 111520007
     locked: 0
