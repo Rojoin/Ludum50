@@ -11,7 +11,6 @@ public class Killable : MonoBehaviour
     }
     public void TakeDamage(int ammount)
     {
-        me.myState = StateEmemy.State.Hurt;
         me.OnHurt(ammount);
     }
 }

@@ -16,16 +16,11 @@ public class ammoOrb : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Ayuda");
+            Debug.Log("Ayuda ammo");
             other.GetComponent<AmmoSystem>().AddReserve(ammo);
             Destroy(gameObject);
 
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
