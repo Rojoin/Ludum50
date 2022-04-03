@@ -50,21 +50,8 @@ public class OptionsMenu : MonoBehaviour
 
     public void SetVolume(float volume)
     {
-        //if(volume ==null) volume = 1.0f;
         audioMixer.SetFloat("Volume", volume);
         Debug.Log(volume);
     }
-    //public void SaveVolumeButton()
-    //{
-    //    float volumeValue = audioMixer.value;
-    //    PlayerPrefs.SetFloat("VolumeValue", volumeValue);
-    //    LoadValues();
-    //}
-    //public void LoadValues()
-    //{
-
-    //    float volumeValue = PlayerPrefs.GetFloat("VolumeValue");
-    //    SetVolume(volumeValue);
-    //    AudioListener.volume = volumeValue;
-    //}
+  
 }
