@@ -41,10 +41,15 @@ public class BaseEnemy : StateEmemy
         else
             myState = State.Die;
     }
-    public override void OnDie()
+    public override IEnumerator OnDie()
     {
+        yield return new WaitForSeconds(deadAnimTime);
         Instantiate(healthOrb, gameObject.transform.position, Quaternion.identity);
         healthOrb.transform.DetachChildren();
+        currentCoroutine = null;
         Destroy(gameObject);
+
+        
+        
     }
 }
