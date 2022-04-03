@@ -8,7 +8,7 @@ public class BaseEnemy : StateEmemy
     public NavMeshAgent agent;
     public Transform enemy;
     public BaseAttack attack;
-
+    
     public GameObject healthOrb;
     void Start()
     {

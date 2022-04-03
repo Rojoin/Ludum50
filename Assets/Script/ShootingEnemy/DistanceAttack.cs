@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace customDistanceAttack
+{
+
 public class DistanceAttack : BaseAttack
 {
    public  GameObject direction; 
@@ -72,4 +75,6 @@ public class DistanceAttack : BaseAttack
     {
         
     }
+}
+
 }

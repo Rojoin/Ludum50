@@ -16,7 +16,7 @@ public class Bullet : MonoBehaviour
     void Start()
     {
         rb= GetComponent<Rigidbody>();
-     transform.LookAt(GetComponentInParent<DistanceAttack>().destination);
+     transform.LookAt(GetComponentInParent<customDistanceAttack.DistanceAttack>().destination);
      transform.parent=null;
 
     }
