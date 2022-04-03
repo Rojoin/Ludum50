@@ -4,15 +4,21 @@ using UnityEngine;
 
 public abstract class StateEmemy : MonoBehaviour
 {
+
     public enum State
     {
         Stay,Walking,Attacking,Hurt,Die
     };
+
     public State myState;
+    public Animator animator;
+
     void Start()
     {
         myState = State.Walking;
     }
+
+
     private void Update()
     {
         switch(myState)
@@ -32,6 +38,10 @@ public abstract class StateEmemy : MonoBehaviour
                 OnDie();
                 break;
         }
+    }
+    void changeAnimationState(State myState)
+    {
+        animator.SetInteger("state",(int)myState);
     }
     public abstract void OnStay();
     public abstract void OnWalking();

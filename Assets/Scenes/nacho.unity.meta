@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: 19bd7ae8ad269f745a8e6ec5020c3d8b
+<<<<<<< HEAD:Assets/Scenes/Game.unity.meta
+guid: af9c190a0ae100f4f81d773521e8b435
+=======
+guid: a0a5d0b05cced7b4ab73db610af4df45
+>>>>>>> origin/Maxi:Assets/Scenes/Maxi.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
