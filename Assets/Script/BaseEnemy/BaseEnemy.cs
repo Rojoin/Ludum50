@@ -8,7 +8,7 @@ public class BaseEnemy : StateEmemy
     public NavMeshAgent agent;
     public Transform enemy;
     public BaseAttack attack;
-
+    
     public GameObject healthOrb;
     void Start()
     {
@@ -34,16 +34,22 @@ public class BaseEnemy : StateEmemy
     }
     public override void OnHurt(int damage)
     {
+        myState = State.Hurt;
         lifePoints -= damage;
         if (lifePoints > 0)
             myState = State.Walking;
         else
             myState = State.Die;
     }
-    public override void OnDie()
+    public override IEnumerator OnDie()
     {
+        yield return new WaitForSeconds(deadAnimTime);
         Instantiate(healthOrb, gameObject.transform.position, Quaternion.identity);
         healthOrb.transform.DetachChildren();
+        currentCoroutine = null;
         Destroy(gameObject);
+
+        
+        
     }
 }

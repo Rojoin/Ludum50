@@ -18,7 +18,7 @@ public class healthOrb : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Ayuda");
+            Debug.Log("Ayuda health");
             other.GetComponent<PlayerHP>().ReceiveHealth(healthPoints);
             Destroy(gameObject);
 
