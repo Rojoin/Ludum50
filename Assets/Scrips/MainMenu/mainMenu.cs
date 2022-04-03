@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Collections;
 using UnityEngine.SceneManagement;
 
 public class mainMenu : MonoBehaviour
@@ -12,7 +11,7 @@ public class mainMenu : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); 
     }
 
-    
+    public GameObject[] sarasa;
     public void quitButton()
     {
         Debug.Log("Quit!");
