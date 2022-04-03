@@ -8,6 +8,7 @@ public class inputSystem : MonoBehaviour
     public InputAction attack;
     public InputAction recharge;
     public InputAction scroll;
+    public InputAction pause;
     
     [SerializeField] SwitchingWeapons switchingWeapons;
     [SerializeField] GunRaycast gun;
@@ -17,6 +18,9 @@ public class inputSystem : MonoBehaviour
     const int slot1 = 0; //Arma Pistola
     const int slot2 = 1; //Arma Melee
 
+    public delegate void RequestingPause();
+    public static event RequestingPause OnRequestingPause;
+   
     void OnAttack()
     {
         switch(switchingWeapons.weaponIndex)
@@ -35,4 +39,9 @@ public class inputSystem : MonoBehaviour
         if(!gun.myAmmo.IsReloading) switchingWeapons.SelectWeapon();
     }
   
+    void OnPause()
+    {
+        Debug.Log("OnEscape");
+        OnRequestingPause?.Invoke();
+    }
 }
