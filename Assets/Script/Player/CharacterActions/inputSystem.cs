@@ -25,15 +25,26 @@ public class inputSystem : MonoBehaviour
    
     void OnAttack()
     {
-       switch(switchingWeapons.index)
+
+        if(weapons[0].activeSelf)
+        {
+            gun.Shooting();
+        }
+        else if(weapons[1].activeSelf)
+        {
+            melee.meleeAttack();
+        }
+       /*switch(switchingWeapons.index)
         {
             case SwitchingWeapons.IndexWeapon.gun:
                 gun.Shooting();
+                Debug.Log("Gun");
                 break;
             case SwitchingWeapons.IndexWeapon.katana:
                 melee.meleeAttack();
+                Debug.Log("Kata");
                 break;
-        }
+        }*/
 
     }
     void OnScroll()

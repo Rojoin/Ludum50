@@ -23,10 +23,10 @@ public class AmmoSystem : MonoBehaviour
     }
     void OnRecharge()
     {
-        if (!reloading)
+        /*if (!reloading)
         {
             StartCoroutine(Reloading());
-        }
+        }*/
     }
     public void RemoveOneBullet()
     {
@@ -38,14 +38,23 @@ public class AmmoSystem : MonoBehaviour
     }
     public void AddReserve(int extra)
     {
-        reserve += extra;
-        OnReserveChange?.Invoke(reserve);
+        if(magazine <10)
+        {
+            magazine += extra;
+            if(magazine >10)
+            {
+                magazine =10;
+            }
+            OnMagazineChange?.Invoke(magazine);
+        }
+
+        
     }
     public int GetMagazineBulletsCount()
     {
         return magazine;
     }
-    IEnumerator Reloading()
+    /*IEnumerator Reloading()
     {
         reloading = true;
         yield return new WaitForSeconds(timeToReload);
@@ -67,5 +76,5 @@ public class AmmoSystem : MonoBehaviour
         }
         yield return new WaitForSeconds(timeToEndAnim);
         reloading = false;
-    }
+    }*/
 }

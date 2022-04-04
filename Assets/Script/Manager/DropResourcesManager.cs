@@ -23,11 +23,11 @@ public class DropResourcesManager : MonoBehaviour
     }
     void SpawnItem(Vector3 position)
     {
-        if(weapons.index == 0)
+        if(weapons.weapons[0].activeSelf)
         {
                Instantiate(healthOrb,position, Quaternion.identity);
         }
-        else
+        else if(weapons.weapons[1].activeSelf)
         {
                Instantiate(ammoOrb,position, Quaternion.identity);
         }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using StarterAssets;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 public class DashController : MonoBehaviour
 {
     public delegate void RequestingDash();
@@ -10,6 +11,8 @@ public class DashController : MonoBehaviour
     FirstPersonController moveScript;
     public float dashSpeed;
     public float dashTime;
+    public Image dashImage;
+    public float dashCooldownMax;
     public InputAction dash;
     bool dashing;
     void Start()
@@ -36,7 +39,13 @@ public class DashController : MonoBehaviour
             OnRequestingDash?.Invoke();
             yield return null;
         }
-        
+        float startCooldown = 0f;
+        while(dashCooldownMax > startCooldown)
+        {
+            startCooldown += Time.deltaTime;
+            dashImage.fillAmount= startCooldown/dashCooldownMax;
+            yield return null;
+        }
         dashing = false;
     }
 }

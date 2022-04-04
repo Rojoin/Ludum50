@@ -18,7 +18,7 @@ public class UIHP : MonoBehaviour
     void Update()
     {
         life.fillAmount =  playerHP.currentLifePoints/100;
-        Debug.Log(playerHP.currentLifePoints/100);
+        
        
     }
 }

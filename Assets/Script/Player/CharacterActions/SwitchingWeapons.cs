@@ -10,7 +10,7 @@ public class SwitchingWeapons : MonoBehaviour
     public GameObject weaponHolder;
     float mouseWheel =0f; 
     private bool isNotScrolling;
-    [SerializeField] GameObject[] weapons;
+    public GameObject[] weapons;
 
     public delegate void ActualWeapon(IndexWeapon indexWeapon);
     public static event ActualWeapon OnActualWeapon;

@@ -12,9 +12,12 @@ public class BaseEnemy : StateEmemy
     public GameObject healthOrb;
     public delegate void EnemyDead(Vector3 position);
     public static event EnemyDead OnEnemyDead;
+   
 
     void Start()
     {
+      enemy = PoolReferenceManager.staticPlayer.transform;
+       
     }
     public override void OnStay()
     {
@@ -49,7 +52,7 @@ public class BaseEnemy : StateEmemy
         agent.isStopped = true;
         yield return new WaitForSeconds(deadAnimTime);
 
-        Instantiate(healthOrb, gameObject.transform.position, Quaternion.identity);
+        //Instantiate(healthOrb, gameObject.transform.position, Quaternion.identity);
       
 
         OnEnemyDead?.Invoke(transform.position);
