@@ -11,6 +11,7 @@ public class DropResourcesManager : MonoBehaviour
    
         // Start is called before the first frame update
 
+    
 
     private void OnEnable() 
     {

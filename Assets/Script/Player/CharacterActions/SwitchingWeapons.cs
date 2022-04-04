@@ -12,6 +12,8 @@ public class SwitchingWeapons : MonoBehaviour
     private bool isNotScrolling;
     [SerializeField] GameObject[] weapons;
 
+    public delegate void ActualWeapon(IndexWeapon indexWeapon);
+    public static event ActualWeapon OnActualWeapon;
    public GameObject gun;
    public GameObject katana;
     
@@ -73,11 +75,13 @@ public class SwitchingWeapons : MonoBehaviour
               Debug.Log("Anda");
               katana.SetActive(true);
               gun.SetActive(false);
+                OnActualWeapon?.Invoke(IndexWeapon.katana);      
           }
           else if(katana.activeSelf == true)
           {
               gun.SetActive(true);
               katana.SetActive(false);
+                OnActualWeapon?.Invoke(IndexWeapon.gun);      
           }
         }
         else if(mouseWheel <0)
@@ -87,16 +91,18 @@ public class SwitchingWeapons : MonoBehaviour
               Debug.Log("Anda");
               katana.SetActive(true);
               gun.SetActive(false);
+              OnActualWeapon?.Invoke(IndexWeapon.katana);          
           }
           else if(katana.activeSelf == true)
           {
               gun.SetActive(true);
               katana.SetActive(false);
+                OnActualWeapon?.Invoke(IndexWeapon.gun);    
           } 
 
         }
         isNotScrolling = false;
-               
+        
             
        }
       else if(mouseWheel == 0 && !isNotScrolling)

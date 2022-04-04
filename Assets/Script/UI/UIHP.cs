@@ -9,17 +9,16 @@ public class UIHP : MonoBehaviour
 {
 
     [SerializeField] PlayerHP playerHP;
-    public Slider hpSlider;
+    public Image life;
+    
    
-    // Start is called before the first frame update
-    void Start()
-    {
-       
-    }
+  
 
     // Update is called once per frame
     void Update()
     {
-        hpSlider.value = playerHP.currentLifePoints;
+        life.fillAmount =  playerHP.currentLifePoints/100;
+        Debug.Log(playerHP.currentLifePoints/100);
+       
     }
 }
