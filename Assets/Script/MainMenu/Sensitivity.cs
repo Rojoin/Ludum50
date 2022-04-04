@@ -27,7 +27,7 @@ public class Sensitivity : MonoBehaviour
         if(value[(value.Length-1)]> 47 && value[(value.Length-1)]< 58)
         {
             PlayerPrefs.SetFloat("Sensitivity",int.Parse(value));
-            
+            standartSensitivity = int.Parse(value);
         }
         else
         {

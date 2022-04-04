@@ -845,6 +845,50 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &699309888
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 699309890}
+  - component: {fileID: 699309889}
+  m_Layer: 0
+  m_Name: SenManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &699309889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 699309888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb75305c0e20d534183978bd6c94e941, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerController: {fileID: 851098036}
+--- !u!4 &699309890
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 699309888}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 340.07468, y: 287.71277, z: -855.3681}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &815219557
 GameObject:
   m_ObjectHideFlags: 0
@@ -978,6 +1022,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 815219557}
   m_CullTransparentMesh: 1
+--- !u!114 &851098036 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+  m_PrefabInstance: {fileID: 1620903764}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55919ac34a26952479f3fc91f777b2fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &947068851
 GameObject:
   m_ObjectHideFlags: 0
@@ -1364,33 +1419,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5babf5bd49e31347ac240e3f5c59a15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHP: {fileID: 1197826541}
-  lowHP: 30
-  myAudio: {fileID: 1019120683}
-  playerDamaged: {fileID: 8300000, guid: 5c18c9d7c5c55044680b6bcec5eabe46, type: 3}
-  playerNearDeath: {fileID: 8300000, guid: 09916c3da8770c940a6321f20b5b2946, type: 3}
-  playerDeath: {fileID: 8300000, guid: b6fba3af65847f849bb581dc4b42caaa, type: 3}
-  playerMeleeHits:
-  - {fileID: 8300000, guid: c04c878a350f81445acdbbf2585e4b07, type: 3}
-  - {fileID: 8300000, guid: 5105f473bd95fe14e9a767d4bd0f1188, type: 3}
-  playerMeleeAttack: {fileID: 8300000, guid: 11d5b8e4e1cbe454f961ab897770d3a5, type: 3}
-  playerMeleeSwap: {fileID: 8300000, guid: 7461862baec4d524e9fabfb9f0bf746c, type: 3}
-  playerPistolAttack: {fileID: 8300000, guid: edb5abc0ff8cb9b4b8ae8cdf1881aa82, type: 3}
-  playerPistolNoAmmo: {fileID: 8300000, guid: b2c95095d151f7449836518efea55336, type: 3}
-  playerPickUpAmmo: {fileID: 8300000, guid: 2898be4528968b349985d10268da37df, type: 3}
-  playerPickUpHeal: {fileID: 8300000, guid: f45c5d082c5afac46a5ac8e557948d2a, type: 3}
-  playerDash: {fileID: 8300000, guid: 2a3ac1f1460e2a6468963710534fe747, type: 3}
-  enemyMeleeAttack: {fileID: 8300000, guid: a4209f5ca6d9011429842436936d202a, type: 3}
-  enemyRangedAttack: {fileID: 8300000, guid: 15d516e293cf96e408abececbfed81de, type: 3}
-  enemySpawn: {fileID: 8300000, guid: 9e0586727e4bfcc428587735c571df07, type: 3}
-  enemyGiantDamaged: {fileID: 8300000, guid: 543a72fd0f18e5342b8eaf52e494aff0, type: 3}
-  enemyGiantDeath: {fileID: 8300000, guid: 7102819fd4810d940921dcd12962fc5c, type: 3}
-  enemySmallDeath: {fileID: 8300000, guid: 15d516e293cf96e408abececbfed81de, type: 3}
-  enemyGiantVoice: {fileID: 8300000, guid: 0ccf58a3419673746ab698e203a85e6a, type: 3}
-  enemySmallVoice: {fileID: 8300000, guid: eb6142cbdd5658245b11f04185d2bfcb, type: 3}
-  backgroundStartGame: {fileID: 8300000, guid: 9f4d9f2b2a381434698430fb2d6a6ddf, type: 3}
-  backgroundMidGame: {fileID: 8300000, guid: f2a6048beccbde9479f2dcad88101250, type: 3}
-  backgroundEndGame: {fileID: 8300000, guid: d86a3edb6037e1d4fbf297ae547e0c65, type: 3}
 --- !u!82 &1019120683
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2577,13 +2605,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1784949487, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: gun
+      value: 
+      objectReference: {fileID: 1620903766}
+    - target: {fileID: 1784949487, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: index
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1784949487, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: katana
       value: 
-      objectReference: {fileID: 919132149155446097, guid: 49480b16d092f0747b7cae8d8706ee22, type: 3}
+      objectReference: {fileID: 1620903765}
     - target: {fileID: 1784949488, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: melee
       value: 
@@ -2660,6 +2692,10 @@ PrefabInstance:
       propertyPath: MoveSpeed
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: RotationSpeed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_Name
       value: PlayerCapsule
@@ -2715,6 +2751,16 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 1784949480, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+--- !u!1 &1620903765 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1515270576, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+  m_PrefabInstance: {fileID: 1620903764}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1620903766 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1474435529, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+  m_PrefabInstance: {fileID: 1620903764}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1637633371
 GameObject:
   m_ObjectHideFlags: 0
