@@ -10,7 +10,7 @@ public class BaseEnemy : StateEmemy
     public BaseAttack attack;
     
     public GameObject healthOrb;
-    public delegate void EnemyDead(Vector3 position);
+    public delegate Transform EnemyDead(Transform position);
     public static event EnemyDead OnEnemyDead;
     public delegate void RequestingEnemyDamaged();
     public static event RequestingEnemyDamaged onRequestingEnemyDamaged;
@@ -19,11 +19,7 @@ public class BaseEnemy : StateEmemy
     
    
 
-    void Start()
-    {
-      enemy = PoolReferenceManager.staticPlayer.transform;
-       
-    }
+    Transform drop;
     public override void OnStay()
     {
 
@@ -58,13 +54,19 @@ public class BaseEnemy : StateEmemy
     }
     public override IEnumerator OnDie()
     {
+        drop = OnEnemyDead?.Invoke(transform);
         agent.isStopped = true;
         yield return new WaitForSeconds(deadAnimTime);
-
+        if(drop != null)
+        {
+        drop.gameObject.SetActive(true);
+        drop.parent=null;
+        drop = null;
+        }
+            
         //Instantiate(healthOrb, gameObject.transform.position, Quaternion.identity);
       
 
-        OnEnemyDead?.Invoke(transform.position);
         
         currentCoroutine = null;
         Destroy(gameObject);
@@ -72,4 +74,9 @@ public class BaseEnemy : StateEmemy
         
         
     }
+    public void SetReference(Transform player) 
+        {
+            enemy = player;
+        }
+    
 }

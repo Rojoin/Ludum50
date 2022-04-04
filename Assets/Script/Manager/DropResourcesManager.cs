@@ -21,16 +21,17 @@ public class DropResourcesManager : MonoBehaviour
     {
         BaseEnemy.OnEnemyDead -= SpawnItem;
     }
-    void SpawnItem(Vector3 position)
+    Transform SpawnItem(Transform tra)
     {
         if(weapons.weapons[0].activeSelf)
         {
-               Instantiate(healthOrb,position, Quaternion.identity);
+               return Instantiate(healthOrb,tra.position, Quaternion.identity,tra).transform;
         }
         else if(weapons.weapons[1].activeSelf)
         {
-               Instantiate(ammoOrb,position, Quaternion.identity);
+               return Instantiate(ammoOrb,tra.position, Quaternion.identity,tra).transform;
         }
+        return null;
     }
     
 }

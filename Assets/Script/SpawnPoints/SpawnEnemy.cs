@@ -10,6 +10,7 @@ public class SpawnEnemy : MonoBehaviour
     public float constantTimer = 10.0f;
     public float random;
     public float maxRandomTimer = 0.0f;
+    public Transform player;
     public delegate void RequestingEnemyGiantSpawn();
     public static event RequestingEnemyGiantSpawn onRequestingEnemySpawn;
 
@@ -19,7 +20,8 @@ public class SpawnEnemy : MonoBehaviour
     {
         int i = Random.Range(0, spawnPointsEnemy.Length);
         int j = Random.Range(0, baseEnemy.Length);
-        Instantiate(baseEnemy[j], spawnPointsEnemy[i].position,transform.rotation,null);
+        GameObject Aux = Instantiate(baseEnemy[j], spawnPointsEnemy[i].position,transform.rotation,null);
+        Aux.GetComponent<BaseEnemy>().SetReference(player);
     }
 
     // Start is called before the first frame update
