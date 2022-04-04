@@ -14,6 +14,7 @@ public class AmmoSystem : MonoBehaviour
     public static event MagazineChange OnMagazineChange;
     public delegate void ReserveChange(int newValue);
     public static event ReserveChange OnReserveChange;
+    
 
     public bool IsReloading { get { return reloading; } }
     void Start()

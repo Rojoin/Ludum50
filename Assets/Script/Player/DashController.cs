@@ -5,6 +5,8 @@ using StarterAssets;
 using UnityEngine.InputSystem;
 public class DashController : MonoBehaviour
 {
+    public delegate void RequestingDash();
+    public static event RequestingDash OnRequestingDash;
     FirstPersonController moveScript;
     public float dashSpeed;
     public float dashTime;
@@ -25,11 +27,13 @@ public class DashController : MonoBehaviour
     {
         float startTime = Time.time;
         dashing = true;
+        
         while (Time.time < startTime + dashTime)
         {
             
             moveScript.controller.Move(transform.right * moveScript.inputDir.move.x +
                 transform.forward * moveScript.inputDir.move.y * dashSpeed * Time.deltaTime);
+            OnRequestingDash?.Invoke();
             yield return null;
         }
         

@@ -4,13 +4,9 @@ using UnityEngine;
 
 public class ammoOrb : MonoBehaviour
 {
-
     public int ammo;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public delegate void RequestingPickUpAmmo();
+    public static event RequestingPickUpAmmo OnRequestingPickUpAmmo;
 
     private void OnTriggerEnter(Collider other) 
     {
@@ -19,7 +15,7 @@ public class ammoOrb : MonoBehaviour
             Debug.Log("Ayuda ammo");
             other.GetComponent<AmmoSystem>().AddReserve(ammo);
             Destroy(gameObject);
-
+            OnRequestingPickUpAmmo?.Invoke();
         }
     }
 
