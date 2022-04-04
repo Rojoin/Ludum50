@@ -10,8 +10,8 @@ public class Sensitivity : MonoBehaviour
 
     public float standartSensitivity = 10f;
     public int maxDigits = 3;
-
-    void Start() 
+    public SensitivityManager sensitivityManager;
+    void OnEnable() 
     {
        if(PlayerPrefs.HasKey("Sensitivity"))
        {
@@ -25,10 +25,10 @@ public class Sensitivity : MonoBehaviour
     }
     public void OnValueChanged(string value)
     {
-        if(value[(value.Length-1)]> 47 && value[(value.Length-1)]< 58 && value.Length <= 3)
+        if(value[(value.Length-1)]> 47 && value[(value.Length-1)]< 58 && value.Length <= 3 || value[(value.Length-1)]==46)
         {
-            PlayerPrefs.SetFloat("Sensitivity",int.Parse(value));
-	    standartSensitivity = int.Parse(value);
+            PlayerPrefs.SetFloat("Sensitivity",float.Parse(value));
+	    standartSensitivity = float.Parse(value);
             
         }
         else
@@ -36,14 +36,19 @@ public class Sensitivity : MonoBehaviour
            value = value.Substring(0, value.Length - 1);
            inputField.text = value;
         }
-
+        if (sensitivityManager != null)
+        sensitivityManager.SetSpeed();
     }
     public void OnEditEnd(string value)
     {
         if(value.Length < 1) 
         {
-            PlayerPrefs.SetFloat("Sensitivity",standartSensitivity); 
+            PlayerPrefs.SetFloat("Sensitivity",standartSensitivity);
+
+            if (sensitivityManager != null)
+                sensitivityManager.SetSpeed();
         }
+
     }
    
     
