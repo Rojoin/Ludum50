@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MusicTrasition : MonoBehaviour
+public class MusicManager : MonoBehaviour
 {
+    
+
     public PlayerHP playerHP;
     public int lowHP = 30;
-    private static MusicTrasition instance;
+    private static MusicManager instance;
     private bool isDead;
 
     private AudioSource[] allAudioSources;
@@ -23,11 +25,14 @@ public class MusicTrasition : MonoBehaviour
     public AudioClip playerPistolNoAmmo;
     public AudioClip playerPickUpAmmo;
     public AudioClip playerPickUpHeal;
+    public AudioClip playerDash;
 
     public AudioClip enemyMeleeAttack;
     public AudioClip enemyRangedAttack;
     public AudioClip enemySpawn;
-    public AudioClip enemyDeath;
+    public AudioClip enemyGiantDamaged;
+    public AudioClip enemyGiantDeath;
+    public AudioClip enemySmallDeath;
     public AudioClip enemyGiantVoice;
     public AudioClip enemySmallVoice;
 
@@ -45,7 +50,6 @@ public class MusicTrasition : MonoBehaviour
     {
         LowHP();
     }
-
     void awake()
     {
         if(instance == null)
@@ -72,6 +76,49 @@ public class MusicTrasition : MonoBehaviour
             }
         }
 
+    }
+
+    private void OnEnable()
+    {
+        MeleeWeapon.OnRequestingMeleeAttack += PlayerMeleeAttack;
+        GunRaycast.OnRequestingNoAmmo += PlayerPistolNoAmmo;
+        DashController.OnRequestingDash += PlayerDash;
+        PlayerHP.OnRequestingPlayerDamaged += PlayerDamaged;
+        PlayerHP.OnRequestingPlayerHeal += PlayerPickUpHeal;
+        GunRaycast.OnRequestingPistolAttack += PlayerPistolAttack;
+    }
+    private void OnDisable()
+    {
+        MeleeWeapon.OnRequestingMeleeAttack -= PlayerMeleeAttack;
+        GunRaycast.OnRequestingNoAmmo -= PlayerPistolNoAmmo;
+        DashController.OnRequestingDash -= PlayerDash;
+        PlayerHP.OnRequestingPlayerDamaged -= PlayerDamaged;
+        PlayerHP.OnRequestingPlayerHeal -= PlayerPickUpHeal;
+        GunRaycast.OnRequestingPistolAttack -= PlayerPistolAttack;
+    }
+    public void PlayerMeleeAttack()
+    {
+        myAudio.PlayOneShot(playerMeleeAttack);
+    }
+    public void PlayerPistolNoAmmo()
+    {
+        myAudio.PlayOneShot(playerPistolNoAmmo);
+    }
+    public void PlayerPistolAttack()
+    {
+        myAudio.PlayOneShot(playerPistolAttack);
+    }
+    public void PlayerPickUpHeal()
+    {
+        myAudio.PlayOneShot(playerPickUpHeal);
+    }
+    public void PlayerDash()
+    {
+        myAudio.PlayOneShot(playerDash);
+    }
+    public void PlayerDamaged()
+    {
+        myAudio.PlayOneShot(playerDamaged);
     }
 
     void StopAllAudio()

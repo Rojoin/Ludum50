@@ -10,6 +10,8 @@ public class MeleeWeapon : MonoBehaviour
     bool isAttacking;
     [SerializeField] float timeUntilAttack = 0.1f; 
     [SerializeField] float activeTimeAttack = 0.5f; 
+    public delegate void RequestingMeleeAttack();
+    public static event RequestingMeleeAttack OnRequestingMeleeAttack;
 
     public void meleeAttack()
     {
@@ -31,7 +33,7 @@ public class MeleeWeapon : MonoBehaviour
         isAttacking = true;
         yield return new WaitForSeconds(timeUntilAttack);
         col.enabled = true;
-        
+        OnRequestingMeleeAttack?.Invoke();
         yield return new WaitForSeconds(activeTimeAttack);
         col.enabled = false;
         isAttacking = false;
