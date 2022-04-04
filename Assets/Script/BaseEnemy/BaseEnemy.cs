@@ -10,6 +10,9 @@ public class BaseEnemy : StateEmemy
     public BaseAttack attack;
     
     public GameObject healthOrb;
+    public delegate void EnemyDead(Vector3 position);
+    public static event EnemyDead OnEnemyDead;
+
     void Start()
     {
     }
@@ -22,7 +25,7 @@ public class BaseEnemy : StateEmemy
         if (agent.stoppingDistance > Vector3.Distance(transform.position, enemy.position)) 
             myState = State.Attacking;
         else
-            agent.SetDestination(enemy.position);
+        if(!agent.isStopped)agent.SetDestination(enemy.position);
 
     }
     public override void OnAttaking()
@@ -43,9 +46,13 @@ public class BaseEnemy : StateEmemy
     }
     public override IEnumerator OnDie()
     {
+        agent.isStopped = true;
         yield return new WaitForSeconds(deadAnimTime);
+
         Instantiate(healthOrb, gameObject.transform.position, Quaternion.identity);
         healthOrb.transform.DetachChildren();
+        OnEnemyDead?.Invoke(transform.position);
+        
         currentCoroutine = null;
         Destroy(gameObject);
 
