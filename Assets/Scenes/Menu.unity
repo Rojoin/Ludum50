@@ -1204,11 +1204,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 311159975}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 950e2a209c3b66d4cbec114418d18c62, type: 3}
+  m_Script: {fileID: 11500000, guid: f2dcf75cff0a92b4d8287bc3d9eac8a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   inputField: {fileID: 1913945593}
   standartSensitivity: 10
+  maxDigits: 3
 --- !u!1 &315583370
 GameObject:
   m_ObjectHideFlags: 0
