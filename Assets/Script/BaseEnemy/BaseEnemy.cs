@@ -50,9 +50,10 @@ public class BaseEnemy : StateEmemy
         yield return new WaitForSeconds(deadAnimTime);
 
         Instantiate(healthOrb, gameObject.transform.position, Quaternion.identity);
-        healthOrb.transform.DetachChildren();
+      
+
         OnEnemyDead?.Invoke(transform.position);
-        
+
         currentCoroutine = null;
         Destroy(gameObject);
 
