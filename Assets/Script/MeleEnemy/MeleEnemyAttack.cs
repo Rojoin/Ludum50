@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MeleEnemyAttack : BaseAttack
 {
+    public delegate void RequestingEnemyMeleeAttack();
+    public static event RequestingEnemyMeleeAttack OnRequestingEnemyMeleeAttack;
     public Collider col;
     protected override void Start()
     {
@@ -33,6 +35,7 @@ public class MeleEnemyAttack : BaseAttack
         yield return new WaitForSeconds(timeTryingHit);
         col.enabled = false;
         if (target != null) target.GetComponent<PlayerHP>().TakeDamage(damage);
+        OnRequestingEnemyMeleeAttack?.Invoke();
         yield return new WaitForSeconds(timeRestToEnd);
         endAttack = true;
         yield return new WaitForSeconds(attackCooldown);

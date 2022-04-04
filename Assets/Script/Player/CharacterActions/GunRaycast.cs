@@ -11,6 +11,10 @@ public class GunRaycast : MonoBehaviour
     public int range = 100;
     public LayerMask hiteableLayer;
     public AmmoSystem myAmmo;
+    public delegate void RequestingPistolAttack();
+    public static event RequestingPistolAttack OnRequestingPistolAttack;
+    public delegate void RequestingNoAmmo();
+    public static event RequestingNoAmmo OnRequestingNoAmmo;
     private void Start()
     {
         myAmmo = GetComponent<AmmoSystem>();
@@ -19,6 +23,7 @@ public class GunRaycast : MonoBehaviour
     {
         if (myAmmo.GetMagazineBulletsCount() > 0 && !myAmmo.IsReloading)
         {
+            OnRequestingPistolAttack?.Invoke();
             myAmmo.RemoveOneBullet();
             RaycastHit hit;
             if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range, hiteableLayer))
@@ -32,6 +37,10 @@ public class GunRaycast : MonoBehaviour
                 }
 
             }
+        }
+        else
+        {
+            OnRequestingNoAmmo?.Invoke();
         }
 
     }

@@ -19,7 +19,7 @@ public class UIAmmo : MonoBehaviour
     }
     void ChangeMagazine(int newValue)
     {
-        magazine.text = newValue + "/";
+        magazine.text = newValue.ToString();
     }
     void ChangeReserve(int newValue)
     {

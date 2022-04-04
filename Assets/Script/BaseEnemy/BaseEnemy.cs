@@ -10,9 +10,16 @@ public class BaseEnemy : StateEmemy
     public BaseAttack attack;
     
     public GameObject healthOrb;
-    void Start()
-    {
-    }
+    public delegate Transform EnemyDead(Transform position);
+    public static event EnemyDead OnEnemyDead;
+    public delegate void RequestingEnemyDamaged();
+    public static event RequestingEnemyDamaged onRequestingEnemyDamaged;
+    public delegate void RequestingEnemyDeath();
+    public static event RequestingEnemyDeath onRequestingEnemyDeath;
+    
+   
+
+    Transform drop;
     public override void OnStay()
     {
 
@@ -22,7 +29,7 @@ public class BaseEnemy : StateEmemy
         if (agent.stoppingDistance > Vector3.Distance(transform.position, enemy.position)) 
             myState = State.Attacking;
         else
-            agent.SetDestination(enemy.position);
+        if(!agent.isStopped)agent.SetDestination(enemy.position);
 
     }
     public override void OnAttaking()
@@ -36,20 +43,40 @@ public class BaseEnemy : StateEmemy
     {
         myState = State.Hurt;
         lifePoints -= damage;
+        onRequestingEnemyDamaged?.Invoke();
         if (lifePoints > 0)
             myState = State.Walking;
         else
+        {
             myState = State.Die;
+            onRequestingEnemyDeath?.Invoke();
+        }
     }
     public override IEnumerator OnDie()
     {
+        drop = OnEnemyDead?.Invoke(transform);
+        agent.isStopped = true;
         yield return new WaitForSeconds(deadAnimTime);
-        Instantiate(healthOrb, gameObject.transform.position, Quaternion.identity);
-        healthOrb.transform.DetachChildren();
+        if(drop != null)
+        {
+        drop.gameObject.SetActive(true);
+        drop.parent=null;
+        drop = null;
+        }
+            
+        //Instantiate(healthOrb, gameObject.transform.position, Quaternion.identity);
+      
+
+        
         currentCoroutine = null;
         Destroy(gameObject);
 
         
         
     }
+    public void SetReference(Transform player) 
+        {
+            enemy = player;
+        }
+    
 }

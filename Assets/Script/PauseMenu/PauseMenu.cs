@@ -11,6 +11,10 @@ public class PauseMenu : MonoBehaviour
     public AudioMixer audioMixer;
     public static bool gameIsPaused;
     public GameObject pauseMenuUI;
+    private void Awake() 
+    {
+        Time.timeScale = 1f;
+    }
     private void OnEnable()
     {
         inputSystem.OnRequestingPause += Escape; 
