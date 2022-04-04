@@ -41,8 +41,8 @@ public class MusicManager : MonoBehaviour
     void Start()
     {
         myAudio = GetComponent<AudioSource>();
-        //myAudio.PlayOneShot(backgroundStartGame);
-        //myAudio.PlayDelayed(10.0f);
+        myAudio.PlayOneShot(backgroundStartGame);
+        myAudio.PlayDelayed(10.0f);
     }
     private void Update()
     {
