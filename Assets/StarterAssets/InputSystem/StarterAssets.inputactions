@@ -277,6 +277,17 @@
                 },
                 {
                     "name": "",
+                    "id": "ff3a7a2d-e7ba-4620-b060-5aebc648e9f8",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "92de14d8-67ee-47fa-bca8-c230802aeb48",
                     "path": "<Mouse>/scroll",
                     "interactions": "",
@@ -315,6 +326,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardMouse",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ce139fa3-8197-471f-b924-41a4df0ee74d",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
                     "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
