@@ -22,9 +22,12 @@ public class inputSystem : MonoBehaviour
     public delegate void RequestingPause();
     public static event RequestingPause OnRequestingPause;
    
-   
     void OnAttack()
     {
+
+        if (PauseMenu.gameIsPaused)
+            return;
+
        switch(switchingWeapons.index)
         {
             case SwitchingWeapons.IndexWeapon.gun:
@@ -38,7 +41,11 @@ public class inputSystem : MonoBehaviour
     }
     void OnScroll()
     {
-        if(!gun.myAmmo.IsReloading) switchingWeapons.SelectWeapon();
+
+        if (PauseMenu.gameIsPaused)
+            return;
+
+        if (!gun.myAmmo.IsReloading) switchingWeapons.SelectWeapon();
     }
   
     void OnPause()

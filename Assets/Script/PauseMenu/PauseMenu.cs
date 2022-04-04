@@ -11,6 +11,12 @@ public class PauseMenu : MonoBehaviour
     public AudioMixer audioMixer;
     public static bool gameIsPaused;
     public GameObject pauseMenuUI;
+    private void Start() {
+        Time.timeScale = 1f;
+        gameIsPaused = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
     private void OnEnable()
     {
         inputSystem.OnRequestingPause += Escape; 
@@ -36,6 +42,8 @@ public class PauseMenu : MonoBehaviour
         gamePlayUI.SetActive(true);
         Time.timeScale = 1f;
         gameIsPaused = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
     void Pause()
     {
@@ -43,10 +51,12 @@ public class PauseMenu : MonoBehaviour
         gamePlayUI.SetActive(false);
         Time.timeScale = 0.0f;
         gameIsPaused = true;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
     public void menuButton()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        SceneManager.LoadScene(0);
     }
     public void quitButton()
     {

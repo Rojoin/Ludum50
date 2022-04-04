@@ -25,7 +25,7 @@ public class BaseEnemy : StateEmemy
         if (agent.stoppingDistance > Vector3.Distance(transform.position, enemy.position)) 
             myState = State.Attacking;
         else
-        if(!agent.isStopped)agent.SetDestination(enemy.position);
+            if(!agent.isStopped)agent.SetDestination(enemy.position);
 
     }
     public override void OnAttaking()
