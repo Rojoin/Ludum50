@@ -12,6 +12,11 @@ public class BaseEnemy : StateEmemy
     public GameObject healthOrb;
     public delegate void EnemyDead(Vector3 position);
     public static event EnemyDead OnEnemyDead;
+    public delegate void RequestingEnemyDamaged();
+    public static event RequestingEnemyDamaged onRequestingEnemyDamaged;
+    public delegate void RequestingEnemyDeath();
+    public static event RequestingEnemyDeath onRequestingEnemyDeath;
+    
    
 
     void Start()
@@ -42,10 +47,14 @@ public class BaseEnemy : StateEmemy
     {
         myState = State.Hurt;
         lifePoints -= damage;
+        onRequestingEnemyDamaged?.Invoke();
         if (lifePoints > 0)
             myState = State.Walking;
         else
+        {
             myState = State.Die;
+            onRequestingEnemyDeath?.Invoke();
+        }
     }
     public override IEnumerator OnDie()
     {
@@ -56,7 +65,7 @@ public class BaseEnemy : StateEmemy
       
 
         OnEnemyDead?.Invoke(transform.position);
-
+        
         currentCoroutine = null;
         Destroy(gameObject);
 

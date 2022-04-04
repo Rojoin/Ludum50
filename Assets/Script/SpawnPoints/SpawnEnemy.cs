@@ -10,8 +10,10 @@ public class SpawnEnemy : MonoBehaviour
     public float constantTimer = 10.0f;
     public float random;
     public float maxRandomTimer = 0.0f;
-     
-      
+    public delegate void RequestingEnemyGiantSpawn();
+    public static event RequestingEnemyGiantSpawn onRequestingEnemySpawn;
+
+
 
     void spawner ()
     {
@@ -33,6 +35,7 @@ public class SpawnEnemy : MonoBehaviour
         if (timer >= (constantTimer + random))
         {
             spawner();
+            onRequestingEnemySpawn?.Invoke();
             random = Random.Range (0, maxRandomTimer);
             timer = 0.0f;
         }

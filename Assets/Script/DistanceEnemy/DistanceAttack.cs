@@ -8,6 +8,8 @@ public class DistanceAttack : BaseAttack
     public GameObject[] bullets;
     BulletEnemy[] shootScript;
     int index;
+    public delegate void RequestingEnemyRangedAttack();
+    public static event RequestingEnemyRangedAttack onRequestingEnemyRangedAttack;
     protected override void Start()
     {
         base.Start();
@@ -30,6 +32,7 @@ public class DistanceAttack : BaseAttack
         yield return new WaitForSeconds(timeWaitingToTryHit);
         yield return new WaitForSeconds(timeTryingHit);
         ShootBullet();
+        onRequestingEnemyRangedAttack?.Invoke();
         yield return new WaitForSeconds(timeRestToEnd);
         endAttack = true;
         yield return new WaitForSeconds(attackCooldown);
