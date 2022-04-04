@@ -1269,8 +1269,9 @@ MonoBehaviour:
   playerDamaged: {fileID: 8300000, guid: 5c18c9d7c5c55044680b6bcec5eabe46, type: 3}
   playerNearDeath: {fileID: 8300000, guid: 09916c3da8770c940a6321f20b5b2946, type: 3}
   playerDeath: {fileID: 8300000, guid: b6fba3af65847f849bb581dc4b42caaa, type: 3}
-  playerMeleeHit1: {fileID: 8300000, guid: c04c878a350f81445acdbbf2585e4b07, type: 3}
-  playerMeleeHit2: {fileID: 8300000, guid: 5105f473bd95fe14e9a767d4bd0f1188, type: 3}
+  playerMeleeHits:
+  - {fileID: 8300000, guid: c04c878a350f81445acdbbf2585e4b07, type: 3}
+  - {fileID: 8300000, guid: 5105f473bd95fe14e9a767d4bd0f1188, type: 3}
   playerMeleeAttack: {fileID: 8300000, guid: 11d5b8e4e1cbe454f961ab897770d3a5, type: 3}
   playerMeleeSwap: {fileID: 8300000, guid: 7461862baec4d524e9fabfb9f0bf746c, type: 3}
   playerPistolAttack: {fileID: 8300000, guid: edb5abc0ff8cb9b4b8ae8cdf1881aa82, type: 3}
@@ -2261,6 +2262,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1784949487, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: index
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1784949487, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: katana
+      value: 
+      objectReference: {fileID: 919132149155446097, guid: 49480b16d092f0747b7cae8d8706ee22, type: 3}
     - target: {fileID: 1784949488, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: melee
       value: 

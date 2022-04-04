@@ -12,6 +12,9 @@ public class MeleeWeapon : MonoBehaviour
     [SerializeField] float activeTimeAttack = 0.5f; 
     public delegate void RequestingMeleeAttack();
     public static event RequestingMeleeAttack OnRequestingMeleeAttack;
+    public delegate void RequestingMeleeHit();
+    public static event RequestingMeleeHit OnRequestingMeleeHit;
+
 
     public void meleeAttack()
     {
@@ -24,6 +27,7 @@ public class MeleeWeapon : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             Debug.Log("aca");
+            OnRequestingMeleeHit?.Invoke();
             other.GetComponent<Killable>().TakeDamage(damage);
 
         }

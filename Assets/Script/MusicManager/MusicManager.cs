@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class MusicManager : MonoBehaviour
 {
-    
-
     public PlayerHP playerHP;
     public int lowHP = 30;
     private static MusicManager instance;
@@ -14,20 +12,19 @@ public class MusicManager : MonoBehaviour
     private AudioSource[] allAudioSources;
     public AudioSource myAudio;
 
-    public AudioClip playerDamaged;
-    public AudioClip playerNearDeath;
-    public AudioClip playerDeath;
-    public AudioClip playerMeleeHit1;
-    public AudioClip playerMeleeHit2;
-    public AudioClip playerMeleeAttack;
-    public AudioClip playerMeleeSwap;
-    public AudioClip playerPistolAttack;
-    public AudioClip playerPistolNoAmmo;
-    public AudioClip playerPickUpAmmo;
-    public AudioClip playerPickUpHeal;
-    public AudioClip playerDash;
+    public AudioClip playerDamaged;     //Listo
+    public AudioClip playerNearDeath;   //Listo
+    public AudioClip playerDeath;       //Listo
+    public AudioClip[] playerMeleeHits; //Listo
+    public AudioClip playerMeleeAttack; //Listo
+    public AudioClip playerMeleeSwap;   //falta
+    public AudioClip playerPistolAttack;//Listo
+    public AudioClip playerPistolNoAmmo;//Listo
+    public AudioClip playerPickUpAmmo;  //Listo
+    public AudioClip playerPickUpHeal;  //Listo
+    public AudioClip playerDash;        //Listo
 
-    public AudioClip enemyMeleeAttack;
+    public AudioClip enemyMeleeAttack;  
     public AudioClip enemyRangedAttack;
     public AudioClip enemySpawn;
     public AudioClip enemyGiantDamaged;
@@ -80,6 +77,9 @@ public class MusicManager : MonoBehaviour
 
     private void OnEnable()
     {
+        MeleEnemyAttack.OnRequestingEnemyMeleeAttack += EnemyMeleeAttack;
+        ammoOrb.OnRequestingPickUpAmmo += PlayerPickUpAmmo;
+        MeleeWeapon.OnRequestingMeleeHit += PlayerMeleeHit;
         MeleeWeapon.OnRequestingMeleeAttack += PlayerMeleeAttack;
         GunRaycast.OnRequestingNoAmmo += PlayerPistolNoAmmo;
         DashController.OnRequestingDash += PlayerDash;
@@ -89,12 +89,28 @@ public class MusicManager : MonoBehaviour
     }
     private void OnDisable()
     {
+        MeleEnemyAttack.OnRequestingEnemyMeleeAttack -= EnemyMeleeAttack;
+        ammoOrb.OnRequestingPickUpAmmo -= PlayerPickUpAmmo;
+        MeleeWeapon.OnRequestingMeleeHit -= PlayerMeleeHit;
         MeleeWeapon.OnRequestingMeleeAttack -= PlayerMeleeAttack;
         GunRaycast.OnRequestingNoAmmo -= PlayerPistolNoAmmo;
         DashController.OnRequestingDash -= PlayerDash;
         PlayerHP.OnRequestingPlayerDamaged -= PlayerDamaged;
         PlayerHP.OnRequestingPlayerHeal -= PlayerPickUpHeal;
         GunRaycast.OnRequestingPistolAttack -= PlayerPistolAttack;
+    }
+    public void EnemyMeleeAttack()
+    {
+        myAudio.PlayOneShot(enemyMeleeAttack);
+    }
+    public void PlayerPickUpAmmo()
+    {
+        myAudio.PlayOneShot(playerPickUpAmmo);
+    }
+    public void PlayerMeleeHit()
+    {
+        var ran = Random.Range(0, 1);
+        myAudio.PlayOneShot(playerMeleeHits[ran]);
     }
     public void PlayerMeleeAttack()
     {
