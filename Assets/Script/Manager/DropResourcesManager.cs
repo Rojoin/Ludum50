@@ -6,31 +6,30 @@ public class DropResourcesManager : MonoBehaviour
 {
     [SerializeField] SwitchingWeapons weapons;
     
-    
+    [SerializeField] GameObject ammoOrb, healthOrb;
+   
+   
         // Start is called before the first frame update
-    void Start()
+
+
+    private void OnEnable() 
     {
-        
+        BaseEnemy.OnEnemyDead += SpawnItem;
     }
-
-
-    public void DropItem()
+    private void OnDisable() 
     {
-        if(weapons.weaponIndex == 0)
+        BaseEnemy.OnEnemyDead -= SpawnItem;
+    }
+    void SpawnItem(Vector3 position)
+    {
+        if(weapons.index == 0)
         {
-               dropHealth = true;
+               Instantiate(healthOrb,position, Quaternion.identity);
         }
         else
         {
-
+               Instantiate(ammoOrb,position, Quaternion.identity);
         }
-
     }
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }

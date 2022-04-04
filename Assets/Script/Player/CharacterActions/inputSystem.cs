@@ -18,20 +18,22 @@ public class inputSystem : MonoBehaviour
     const int slot1 = 0; //Arma Pistola
     const int slot2 = 1; //Arma Melee
 
+    
     public delegate void RequestingPause();
     public static event RequestingPause OnRequestingPause;
    
+   
     void OnAttack()
     {
-       /* switch(switchingWeapons.index)
+       switch(switchingWeapons.index)
         {
-            case switchingWeapons.index:
+            case SwitchingWeapons.IndexWeapon.gun:
                 gun.Shooting();
                 break;
-            case katana:
+            case SwitchingWeapons.IndexWeapon.katana:
                 melee.meleeAttack();
                 break;
-        }*/
+        }
 
     }
     void OnScroll()
