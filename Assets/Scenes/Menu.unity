@@ -1057,6 +1057,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2dcf75cff0a92b4d8287bc3d9eac8a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputField: {fileID: 0}
+  standartSensitivity: 10
+  maxDigits: 3
 --- !u!1 &315583370
 GameObject:
   m_ObjectHideFlags: 0
@@ -6220,7 +6223,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1324225885
 RectTransform:
   m_ObjectHideFlags: 0

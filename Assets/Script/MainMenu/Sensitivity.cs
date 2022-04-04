@@ -9,6 +9,7 @@ public class Sensitivity : MonoBehaviour
     public InputField inputField;
 
     public float standartSensitivity = 10f;
+    public int maxDigits = 3;
 
     void Start() 
     {
@@ -24,17 +25,17 @@ public class Sensitivity : MonoBehaviour
     }
     public void OnValueChanged(string value)
     {
-        if(value[(value.Length-1)]> 47 && value[(value.Length-1)]< 58)
+        if(value[(value.Length-1)]> 47 && value[(value.Length-1)]< 58 && value.Length <= 3)
         {
             PlayerPrefs.SetFloat("Sensitivity",int.Parse(value));
-            standartSensitivity = int.Parse(value);
+	    standartSensitivity = int.Parse(value);
+            
         }
         else
         {
            value = value.Substring(0, value.Length - 1);
            inputField.text = value;
         }
-        Debug.Log(PlayerPrefs.GetFloat("Sensitivity"));
 
     }
     public void OnEditEnd(string value)
