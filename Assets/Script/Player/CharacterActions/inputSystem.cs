@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using UnityEngine.SceneManagement;
 public class inputSystem : MonoBehaviour
 {
     public InputAction attack;
@@ -54,7 +54,9 @@ public class inputSystem : MonoBehaviour
   
     void OnPause()
     {
+        SceneManager.LoadScene(0);
         Debug.Log("OnEscape");
-        OnRequestingPause?.Invoke();
+
+        //OnRequestingPause?.Invoke();
     }
 }

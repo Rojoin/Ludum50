@@ -11,6 +11,8 @@ public class MusicManager : MonoBehaviour
 
     private AudioSource[] allAudioSources;
     public AudioSource myAudio;
+    public AudioSource loop1;
+    public AudioSource loop2;
 
     public AudioClip playerDamaged;     //Listo
     public AudioClip playerNearDeath;   //Listo
@@ -24,59 +26,69 @@ public class MusicManager : MonoBehaviour
     public AudioClip playerPickUpHeal;  //Listo
     public AudioClip playerDash;        //Listo
 
-    public AudioClip enemyMeleeAttack;  //Listo
-    public AudioClip enemyRangedAttack; //Listo SUPUESTAMENTE DESAPARECE
+    public AudioClip enemyMeleeAttack;  //Listo Muy Lento
+    public AudioClip enemyRangedAttack; //Listo
     public AudioClip enemySpawn;        //Listo
     public AudioClip enemyGiantDamaged; //Listo
     public AudioClip enemyGiantDeath;   //Listo
-    public AudioClip enemySmallDeath;
+    public AudioClip enemySmallDeath;   //MISSING
     public AudioClip enemyGiantVoice;   //??
     public AudioClip enemySmallVoice;   //??
 
     public AudioClip backgroundStartGame;
-    public AudioClip backgroundMidGame;
-    public AudioClip backgroundEndGame;
+    public AudioClip backgroundMidGame; //Falta LOOP
+    public AudioClip backgroundEndGame; //Listo
     //public AudioClip background
 
     void Start()
     {
         myAudio = GetComponent<AudioSource>();
         myAudio.PlayOneShot(backgroundStartGame);
-        myAudio.PlayDelayed(10.0f);
+        StartCoroutine(PlayLoop());
+        
     }
     private void Update()
     {
         LowHP();
     }
-    void awake()
+    //void awake()
+    //{
+    //    if(instance == null)
+    //    {
+    //        instance = this;
+    //        DontDestroyOnLoad(instance);
+    //    }
+    //    else
+    //    {
+    //        Destroy(gameObject);
+    //    }
+    //}
+    IEnumerator PlayLoop()
     {
-        if(instance == null)
+        yield return new WaitForSeconds(10.0f);
+        loop1.Play();
+        loop2.Play();
+    }
+
+    void LowHP()
+    {
+        if(playerHP.GetCurrentLifePoints() >= lowHP )
         {
-            instance = this;
-            DontDestroyOnLoad(instance);
+            loop1.volume = 1;
+            loop2.volume = 0;
         }
         else
         {
-            Destroy(gameObject);
+            loop1.volume = 0;
+            loop2.volume = 1;
         }
-    }
-    void LowHP()
-    {
-        //if(playerHP.GetCurrentLifePoints() < lowHP)
-        //{
-            //myAudio.PlayOneShot(playerNearDeath);
-        //}
+        
 
     }
 
     private void OnEnable()
     {
         PlayerHP.OnRequestingPlayerDeath += PlayerDeath;
-        BaseEnemy.onRequestingEnemyDeath += EnemyGiantDeath;
-        BaseEnemy.onRequestingEnemyDamaged += EnemyDamaged;
-        SpawnEnemy.onRequestingEnemySpawn += EnemySpawn;
-        DistanceAttack.onRequestingEnemyRangedAttack += EnemyRangedAttack;
-        MeleEnemyAttack.OnRequestingEnemyMeleeAttack += EnemyMeleeAttack;
         ammoOrb.OnRequestingPickUpAmmo += PlayerPickUpAmmo;
         MeleeWeapon.OnRequestingMeleeHit += PlayerMeleeHit;
         MeleeWeapon.OnRequestingMeleeAttack += PlayerMeleeAttack;
@@ -85,15 +97,17 @@ public class MusicManager : MonoBehaviour
         PlayerHP.OnRequestingPlayerDamaged += PlayerDamaged;
         PlayerHP.OnRequestingPlayerHeal += PlayerPickUpHeal;
         GunRaycast.OnRequestingPistolAttack += PlayerPistolAttack;
+
+
+        BaseEnemy.onRequestingEnemyDeath += EnemyGiantDeath;
+        BaseEnemy.onRequestingEnemyDamaged += EnemyDamaged;
+        SpawnEnemy.onRequestingEnemySpawn += EnemySpawn;
+        DistanceAttack.onRequestingEnemyRangedAttack += EnemyRangedAttack;
+        MeleEnemyAttack.OnRequestingEnemyMeleeAttack += EnemyMeleeAttack;
     }
     private void OnDisable()
     {
         PlayerHP.OnRequestingPlayerDeath -= PlayerDeath;
-        BaseEnemy.onRequestingEnemyDeath -= EnemyGiantDeath;
-        BaseEnemy.onRequestingEnemyDamaged -= EnemyDamaged;
-        SpawnEnemy.onRequestingEnemySpawn -= EnemySpawn;
-        DistanceAttack.onRequestingEnemyRangedAttack -= EnemyRangedAttack;
-        MeleEnemyAttack.OnRequestingEnemyMeleeAttack -= EnemyMeleeAttack;
         ammoOrb.OnRequestingPickUpAmmo -= PlayerPickUpAmmo;
         MeleeWeapon.OnRequestingMeleeHit -= PlayerMeleeHit;
         MeleeWeapon.OnRequestingMeleeAttack -= PlayerMeleeAttack;
@@ -102,6 +116,13 @@ public class MusicManager : MonoBehaviour
         PlayerHP.OnRequestingPlayerDamaged -= PlayerDamaged;
         PlayerHP.OnRequestingPlayerHeal -= PlayerPickUpHeal;
         GunRaycast.OnRequestingPistolAttack -= PlayerPistolAttack;
+
+
+        BaseEnemy.onRequestingEnemyDeath -= EnemyGiantDeath;
+        BaseEnemy.onRequestingEnemyDamaged -= EnemyDamaged;
+        SpawnEnemy.onRequestingEnemySpawn -= EnemySpawn;
+        DistanceAttack.onRequestingEnemyRangedAttack -= EnemyRangedAttack;
+        MeleEnemyAttack.OnRequestingEnemyMeleeAttack -= EnemyMeleeAttack;
     }
     public void PlayerDeath()
     {

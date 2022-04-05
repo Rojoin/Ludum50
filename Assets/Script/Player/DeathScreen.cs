@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DeathScreen : MonoBehaviour
 {
-    
+    public GameObject gm;
     void Update()
     {
     }
@@ -20,7 +20,8 @@ public class DeathScreen : MonoBehaviour
 
     public void ActivateDeathScreen()
     {
-        
+        gm.SetActive(true);
+        Time.timeScale = 0.0f;
     }
 
     }
