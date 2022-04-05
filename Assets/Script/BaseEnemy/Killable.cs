@@ -9,7 +9,7 @@ public class Killable : MonoBehaviour
     {
         me = GetComponent<BaseEnemy>();
     }
-    public void TakeDamage(int ammount)
+    public virtual void TakeDamage(int ammount)
     {
         me.OnHurt(ammount);
     }

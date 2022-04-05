@@ -4,29 +4,38 @@ using UnityEngine;
 
 public class BulletEnemy : MonoBehaviour
 {
-    public Vector3 targetPoint = Vector3.zero;
-    Rigidbody rb;
-    public float speed;
-    private void Awake()
-    {
-        rb = GetComponent<Rigidbody>();
+    [SerializeField] float speed;
+    [SerializeField] int damage;
+    [SerializeField] PlayerHP player;
+    [SerializeField] Vector3 direction;
 
-    }
-    public void OnStart(Vector3 hitpoint)
-    {
-        targetPoint = hitpoint;
-        transform.LookAt(-transform.forward + transform.position);
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.CompareTag("Player"))
-        {
+    bool hitted = false;
 
+    void Start() {
+        player = FindObjectOfType<PlayerHP>();
+    }
+
+    private void OnEnable() {
+        hitted = false;
+    }
+
+    void Update() {
+        transform.position += direction * speed * Time.deltaTime;
+    }
+
+    public void SetProjectile(Vector3 dir) {
+        direction = dir;
+        transform.LookAt(transform.position + direction);
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        if (hitted)
+            return;
+
+        if (other.CompareTag("Player")) {
+            player.TakeDamage(damage);
+            hitted = true;
+            gameObject.SetActive(false);
         }
     }
-    private void Update()
-    {
-        rb.velocity = (transform.position - targetPoint).normalized * speed * Time.deltaTime;
-    }
-
 }

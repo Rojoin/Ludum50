@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class inputSystem : MonoBehaviour
 {
@@ -9,7 +10,8 @@ public class inputSystem : MonoBehaviour
     public InputAction recharge;
     public InputAction scroll;
     public InputAction pause;
-    
+    public Animator animator;
+   
     [SerializeField] SwitchingWeapons switchingWeapons;
     [SerializeField] GunRaycast gun;
     [SerializeField] MeleeWeapon melee;
@@ -28,10 +30,13 @@ public class inputSystem : MonoBehaviour
 
         if(weapons[0].activeSelf)
         {
+            
             gun.Shooting();
+
         }
         else if(weapons[1].activeSelf)
         {
+            animator.SetTrigger("start");
             melee.meleeAttack();
         }
        /*switch(switchingWeapons.index)
@@ -55,6 +60,8 @@ public class inputSystem : MonoBehaviour
     void OnPause()
     {
         Debug.Log("OnEscape");
-        OnRequestingPause?.Invoke();
+        //OnRequestingPause?.Invoke();
+        SceneManager.LoadScene(0);
     }
+
 }

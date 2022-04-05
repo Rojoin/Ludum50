@@ -16,6 +16,8 @@ public class DropResourcesManager : MonoBehaviour
     private void OnEnable() 
     {
         BaseEnemy.OnEnemyDead += SpawnItem;
+        Cursor.lockState= CursorLockMode.Locked;
+        Cursor.visible = false;
     }
     private void OnDisable() 
     {

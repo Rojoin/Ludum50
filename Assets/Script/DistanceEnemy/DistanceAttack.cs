@@ -4,24 +4,24 @@ using UnityEngine;
 
 public class DistanceAttack : BaseAttack
 {
-    public GameObject bulletPrefab;
-    public GameObject[] bullets;
-    BulletEnemy[] shootScript;
-    int index;
-    public delegate void RequestingEnemyRangedAttack();
-    public static event RequestingEnemyRangedAttack onRequestingEnemyRangedAttack;
-    protected override void Start()
-    {
-        base.Start();
-        for(int i = 0; i < bullets.Length;i++)
-        {
-            bullets[i] = Instantiate(bulletPrefab,transform);
-        }
-        shootScript = new BulletEnemy[bullets.Length];
+    public BulletEnemy bulletPrefab;
+    public Transform spawnBulletPosition;
 
-        for (int i = 0; i < bullets.Length; i++)
-        {
-            shootScript[i] =bullets[i].GetComponent<BulletEnemy>();
+    [SerializeField] int bulletsObjectPooling;
+
+    List<BulletEnemy> bullets;
+
+    int index;
+    protected override void Start() {
+        base.Start();
+
+        target = FindObjectOfType<StarterAssets.FirstPersonController>().gameObject;
+
+        bullets = new List<BulletEnemy>();
+
+        for (int i = 0; i < bulletsObjectPooling; i++) {
+            bullets.Add(Instantiate(bulletPrefab, Vector3.zero, Quaternion.identity));
+            bullets[i].gameObject.SetActive(false);
         }
     }
     public override IEnumerator Attacking()
@@ -32,7 +32,6 @@ public class DistanceAttack : BaseAttack
         yield return new WaitForSeconds(timeWaitingToTryHit);
         yield return new WaitForSeconds(timeTryingHit);
         ShootBullet();
-        onRequestingEnemyRangedAttack?.Invoke();
         yield return new WaitForSeconds(timeRestToEnd);
         endAttack = true;
         yield return new WaitForSeconds(attackCooldown);
@@ -40,19 +39,24 @@ public class DistanceAttack : BaseAttack
     }
     void ShootBullet()
     {
+        Debug.Log("PUTA");
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, (target.transform.position - transform.position).normalized, out hit, 1000))
-        {
+        if (Physics.Raycast(spawnBulletPosition.position, spawnBulletPosition.position + spawnBulletPosition.forward, out hit, 1000)) {
+            if (hit.transform.CompareTag("Player")) {
+                Debug.Log("wachin");
+                bullets[index].gameObject.SetActive(true);
+                bullets[index].SetProjectile((target.transform.position - spawnBulletPosition.position).normalized);
 
+                index++;
+                if (index >= bullets.Count)
+                    index = 0;
+            }
+            Debug.Log(hit.transform.name);
         }
-
-        shootScript[index].OnStart(hit.point);
-        bullets[index].SetActive(true);
-        index++;
-        if (index >= bullets.Length) index = 0;
     }
     private void Update()
     {
-        Debug.DrawLine(transform.position,transform.up * 10,Color.red);
+        //Debug.DrawLine(spawnBulletPosition.position, ( spawnBulletPosition.position - (target.transform.position + rayOffset) ).normalized * 10, Color.red);
+        Debug.DrawLine(transform.position,transform.position + transform.forward * 10,Color.red);
     }
 }

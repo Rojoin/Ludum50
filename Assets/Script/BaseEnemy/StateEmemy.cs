@@ -47,11 +47,12 @@ public abstract class StateEmemy : MonoBehaviour
                 break;
         }
     }
-    void changeAnimationState(State myState)
-    {
-        animator.SetInteger("state",(int)myState);
-        lastState = myState;
-        animator.SetTrigger("start");
+    void changeAnimationState(State myState) {
+        if (animator != null) {
+            animator.SetInteger("state", (int)myState);
+            lastState = myState;
+            animator.SetTrigger("start");
+        }
     }
     public abstract void OnStay();
     public abstract void OnWalking();

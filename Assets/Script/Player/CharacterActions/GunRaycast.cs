@@ -6,6 +6,8 @@ using StarterAssets;
 
 public class GunRaycast : MonoBehaviour
 {
+    public Animator animator;
+    public Animator animator2;
     [SerializeField] Camera fpsCam;
     public int damage = 10;
     public int range = 100;
@@ -24,6 +26,8 @@ public class GunRaycast : MonoBehaviour
         if (myAmmo.GetMagazineBulletsCount() > 0 && !myAmmo.IsReloading)
         {
             OnRequestingPistolAttack?.Invoke();
+            animator.SetTrigger("start");
+            animator2.SetTrigger("start");
             myAmmo.RemoveOneBullet();
             RaycastHit hit;
             if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range, hiteableLayer))

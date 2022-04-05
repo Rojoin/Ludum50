@@ -10,6 +10,10 @@ public class SensitivityManager : MonoBehaviour
     
     void Start()
     {
+        SetSpeed();
+    }
+    public void SetSpeed()
+    {
        playerController.RotationSpeed = PlayerPrefs.GetFloat("Sensitivity");
 
     }

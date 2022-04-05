@@ -41,8 +41,8 @@ public class MusicManager : MonoBehaviour
     void Start()
     {
         myAudio = GetComponent<AudioSource>();
-        //myAudio.PlayOneShot(backgroundStartGame);
-        //myAudio.PlayDelayed(10.0f);
+        myAudio.PlayOneShot(backgroundStartGame);
+        myAudio.PlayDelayed(10.0f);
     }
     private void Update()
     {
@@ -75,7 +75,7 @@ public class MusicManager : MonoBehaviour
         BaseEnemy.onRequestingEnemyDeath += EnemyGiantDeath;
         BaseEnemy.onRequestingEnemyDamaged += EnemyDamaged;
         SpawnEnemy.onRequestingEnemySpawn += EnemySpawn;
-        DistanceAttack.onRequestingEnemyRangedAttack += EnemyRangedAttack;
+        customDistanceAttack.DistanceAttack.onRequestingEnemyRangedAttack += EnemyRangedAttack;
         MeleEnemyAttack.OnRequestingEnemyMeleeAttack += EnemyMeleeAttack;
         ammoOrb.OnRequestingPickUpAmmo += PlayerPickUpAmmo;
         MeleeWeapon.OnRequestingMeleeHit += PlayerMeleeHit;
@@ -92,7 +92,7 @@ public class MusicManager : MonoBehaviour
         BaseEnemy.onRequestingEnemyDeath -= EnemyGiantDeath;
         BaseEnemy.onRequestingEnemyDamaged -= EnemyDamaged;
         SpawnEnemy.onRequestingEnemySpawn -= EnemySpawn;
-        DistanceAttack.onRequestingEnemyRangedAttack -= EnemyRangedAttack;
+        customDistanceAttack.DistanceAttack.onRequestingEnemyRangedAttack -= EnemyRangedAttack;
         MeleEnemyAttack.OnRequestingEnemyMeleeAttack -= EnemyMeleeAttack;
         ammoOrb.OnRequestingPickUpAmmo -= PlayerPickUpAmmo;
         MeleeWeapon.OnRequestingMeleeHit -= PlayerMeleeHit;

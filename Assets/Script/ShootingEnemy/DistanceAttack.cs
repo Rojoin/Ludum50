@@ -12,7 +12,8 @@ public class DistanceAttack : BaseAttack
     public GameObject prefabBullet;
     public Transform firePoint;
     public Vector3 destination;
-
+    public delegate void RequestingEnemyRangedAttack();
+    public static event RequestingEnemyRangedAttack onRequestingEnemyRangedAttack;
     public GameObject a;
     int balaIndex = 0;
     
@@ -55,6 +56,7 @@ public class DistanceAttack : BaseAttack
         {
             balaIndex = 0;
         }
+        
        bullet[balaIndex].SetActive(true);
 
 
@@ -67,6 +69,7 @@ public class DistanceAttack : BaseAttack
         endAttack = false;
         yield return new WaitForSeconds(timeWaitingToTryHit);
         ShootProjectile();
+        onRequestingEnemyRangedAttack?.Invoke();
          endAttack = true;
         yield return new WaitForSeconds(attackCooldown);
          canAttack = true;
