@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5658156747169424464}
+  - component: {fileID: -7869685590661505290}
   m_Layer: 0
   m_Name: Katana
   m_TagString: Untagged
@@ -31,6 +32,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &-7869685590661505290
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6184094451338273425}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 1b9b2b983704c6e498b1ecdf372e8740, type: 3}
+  m_Controller: {fileID: 9100000, guid: 0d0a2feea753c7c4f9e560eff3594606, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &7118357622129785668
 PrefabInstance:
   m_ObjectHideFlags: 0
